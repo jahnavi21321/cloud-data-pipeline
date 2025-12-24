@@ -4,10 +4,22 @@
 This project demonstrates the design and implementation of an event-driven data pipeline on AWS that ingests raw event data, validates it, applies transformations, and produces analytics-ready datasets.
 
 ## Problem Statement
-(Use the problem statement above)
+Organizations receive large volumes of incoming event data (documents, transactions, logs) that must be validated, transformed, and made analytics-ready in a reliable and scalable way. Manual processing leads to delays, data quality issues, and poor observability.
 
 ## Architecture
-(Insert architecture diagram)
+Raw Events (JSON/CSV)
+        ↓
+   S3 (raw bucket)
+        ↓ (event trigger)
+   AWS Lambda (validation)
+        ↓
+ AWS Step Functions (orchestration)
+        ↓
+   Transform Lambda / Glue Job
+        ↓
+   S3 (curated bucket - Parquet)
+        ↓
+   Athena / SQL-ready
 
 ## Data Flow
 1. Raw event files are uploaded to an S3 raw bucket
